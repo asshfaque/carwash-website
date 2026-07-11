@@ -1,495 +1,437 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GAADIWAALA • Carwash</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-    :root {
-      --primary: #ff0000;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    .shutter {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shutter-panel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(#1f2937 0%, #111827 100%);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-      animation: rollUp 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-      z-index: 20;
-    }
-
-    .shutter-panel::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 8px,
-        rgba(255,255,255,0.08) 8px,
-        rgba(255,255,255,0.08) 12px
-      );
-      pointer-events: none;
-    }
-
-    @keyframes rollUp {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-100%);
-      }
-    }
-
-    .hero {
-      position: relative;
-      min-height:100vh;
-      height:auto;
-      padding-top:80px;
-      padding-bottom:50px;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('https://i.pinimg.com/1200x/34/36/72/343672f36e1c13b2bde9799dbbcd7994.jpg') center/cover no-repeat;
-    }
-
-    .car {
-      animation: float 50s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-30px); }
-    }
-
-    
-    .nav-link {
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #ff0000;
-      transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover:after {
-      width: 100%;
-    }
-
-    @media (max-width:768px){
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAADIWAALA • Carwash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    :root {
+      --primary: #ff0000;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .shutter {
+      position: relative;
+      overflow: hidden;
+    }
+    .shutter-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(#1f2937 0%, #111827 100%);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+      animation: rollUp 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      z-index: 20;
+    }
+    .shutter-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(255,255,255,0.08) 8px,
+        rgba(255,255,255,0.08) 12px
+      );
+      pointer-events: none;
+    }
+    @keyframes rollUp {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+    .hero {
+      position: relative;
+      min-height:100vh;
+      height:auto;
+      padding-top:80px;
+      padding-bottom:50px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('https://i.pinimg.com/1200x/34/36/72/343672f36e1c13b2bde9799dbbcd7994.jpg') center/cover no-repeat;
+    }
+    .car {
+      animation: float 50s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+   
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+   
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #ff0000;
+      transition: width 0.3s ease;
+    }
+   
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    @media (max-width:768px){
 .hero{
-    min-height:auto;
-    padding-top:100px;
-    padding-bottom:50px;
-    }
-
+    min-height:auto;
+    padding-top:100px;
+    padding-bottom:50px;
+    }
 .hero h1{
-    line-height:0.95;
+    line-height:0.95;
 }
-
 .modal{
-    width:95%;
+    width:95%;
 }
-
 .shutter-panel .text-4xl{
-    font-size:2rem;
+    font-size:2rem;
 }
-
 }
-
-  </style>
+  </style>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
-
-  <!-- Navbar -->
-  <nav class="bg-black/90 backdrop-blur-md fixed w-full z-50 border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div>
-  <span class="text-lg sm:text-2xl font-bold tracking-tighter">GAADI</span>
-  <span class="text-lg sm:text-2xl font-light tracking-widest text-red-500">WAALA</span>
+  <!-- Navbar -->
+  <nav class="bg-black/90 backdrop-blur-md fixed w-full z-50 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div>
+  <span class="text-lg sm:text-2xl font-bold tracking-tighter">GAADI</span>
+  <span class="text-lg sm:text-2xl font-light tracking-widest text-red-500">WAALA</span>
 </div>
-      </div>
-
-      <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-        <a href="#" onclick="window.location.reload()" class="nav-link text-red-500">HOME</a>
-        <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569" class="nav-link">LOCATION</a>
-        <a href="services.html" class="nav-link">SERVICES</a>
-        <a href="status.html" class="nav-link">CURRENT STATUS</a>
-        <a href="about.html" class="nav-link">ABOUT</a>
-      </div>
-
+      </div>
+      <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+        <a href="#" onclick="window.location.reload()" class="nav-link text-red-500">HOME</a>
+        <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569" class="nav-link">LOCATION</a>
+        <a href="services.html" class="nav-link">SERVICES</a>
+        <a href="status.html" class="nav-link">CURRENT STATUS</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+      </div>
 <button id="menuBtn"
-        class="md:hidden text-2xl text-white">
-    <i class="fa-solid fa-bars"></i>
+        class="md:hidden text-2xl text-white">
+    <i class="fa-solid fa-bars"></i>
 </button>
-
-        <div class="hidden md:flex items-center gap-4">
-        <button onclick="window.location.href='tel:+918606856000'"
-                class="px-3 sm:px-6 py-2 text-xs sm:text-sm" text-sm font-semibold border border-white/30 hover:border-white transition-colors rounded-full flex items-center gap-2">
-          <i class="fa-solid fa-phone"></i>
-          <span>CONTACT</span>
-        </button>
-        <button onClick="openBookingModal()" 
-                class="bg-red-600 hover:bg-red-700 transition-colors px-4 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2">
-          <i class="fa-solid fa-car"></i>
-          BOOK
-        </button>
-      </div>
-    </div>
-  </nav>
-
+        <div class="hidden md:flex items-center gap-4">
+        <button onclick="window.location.href='tel:+918606856000'"
+                class="px-3 sm:px-6 py-2 text-xs sm:text-sm" text-sm font-semibold border border-white/30 hover:border-white transition-colors rounded-full flex items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <span>CONTACT</span>
+        </button>
+        <button onClick="openBookingModal()"
+                class="bg-red-600 hover:bg-red-700 transition-colors px-4 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-car"></i>
+          BOOK
+        </button>
+      </div>
+    </div>
+  </nav>
 <div id="mobileMenu"
-     class="hidden md:hidden bg-black border-b border-zinc-800">
-
-    <a href="#" class="block px-6 py-4 border-b border-zinc-800">HOME</a>
-
-    <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569"
-       class="block px-6 py-4 border-b border-zinc-800">
-       LOCATION
-    </a>
-
-    <a href="services.html"
-       class="block px-6 py-4 border-b border-zinc-800">
-       SERVICES
-    </a>
-
-    <a href="status.html"
-       class="block px-6 py-4 border-b border-zinc-800">
-       CURRENT STATUS
-    </a>
-
-    <a href="about.html"
-       class="block px-6 py-4 border-b border-zinc-800">
-       ABOUT
-    </a>
-
-    <a href="tel:+918606856000"
-       class="block px-6 py-4 border-b border-zinc-800">
-       CONTACT
-    </a>
-
-    <button onclick="openBookingModal()"
-            class="block px-6 py-4 border-b border-zinc-800">
-        BOOK
-    </button>
-
+     class="hidden md:hidden bg-black border-b border-zinc-800">
+    <a href="#" class="block px-6 py-4 border-b border-zinc-800">HOME</a>
+    <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569"
+       class="block px-6 py-4 border-b border-zinc-800">
+       LOCATION
+    </a>
+    <a href="services.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       SERVICES
+    </a>
+    <a href="status.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CURRENT STATUS
+    </a>
+    <a href="about.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       ABOUT
+    </a>
+    <a href="tel:+918606856000"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CONTACT
+    </a>
+    <button onclick="openBookingModal()"
+            class="block px-6 py-4 border-b border-zinc-800">
+        BOOK
+    </button>
 </div>
-
-  <!-- Shutter -->
-  <div class="shutter pt-20">
-    <!-- Shutter -->
-    <div class="shutter-panel">
-      <div class="flex-1 flex items-center justify-center">
-        <div class="text-center">
-          <div class="w-24 h-2 bg-zinc-400 mx-auto mb-8 rounded"></div>
-          <div class="text-4xl font-bold tracking-widest text-zinc-400">GAADIWAALA</div>
-          <div class="text-zinc-500 text-sm mt-2">PREMIUM CAR WASH</div>
-        </div>
-      </div>
-      <div class="h-12 bg-zinc-900 flex items-center justify-center gap-8 text-xs tracking-widest text-zinc-500">
-        <div>● ROLLING UP ●</div>
-        <div>● PREMIUM CAR WASH ●</div>
-        <div>● ROLLING UP ●</div>
-      </div>
-    </div>
-
-    <!-- inside shutter -->
-    <div class="hero flex items-center">
-      <div class="max-w-7xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center relative z-10 pt-24 md:pt-0">
-
-
-        <div id="statusIndicator" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm">
-            <div id="statusDot" class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            <span id="statusText">NOW OPEN</span>
-          </div>
-          
-          <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter">
-            ELEVATE<br>YOUR DRIVE
-          </h1>
-
-          <p class="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-md mx-auto md:mx-0">
-            Professional car wash and detailing services for a spotless shine, every time.
-          </p>
-
-          <div class="flex flex-col sm:flex-row items-center gap-4">
-            <a href="status.html"><button onclick="document.getElementById('car-section').scrollIntoView({ behavior: 'smooth' })" 
-                    class="bg-white text-black w-64 sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold flex items-center gap-3 hover:scale-105 transition-transform">
-              VIEW STATUS
-              <i class="fa-solid fa-arrow-right"></i>
-            </button></a>
-            
-            <button onClick="openBookingModal()" 
-                    class="border border-white/50 hover:bg-white/10 w-64 sm:w-auto px-8 py-4 sm:py-5 rounded-2xl font-medium transition-colors">
-              BOOK A CAR WASH
-            </button>
-          </div>
-          <div>
-            </div>
-          <div class="flex justify-center md:justify-start gap-8 text-sm">
-            <div>
-              <div id="currentTime" class="text-red-500 text-3xl font-mono"></div>
-              <!--<div class="text-zinc-500">Time</div>-->
-            </div>
-            </div>
-        </div>
-
-        <div id="car-section" class="relative flex justify-center mt-10 md:mt-0">
-          <div class="relative car">
-            <img id="car-image" 
-                 src="VTPzX.jpg" 
-                 alt="Luxury Sports Car"
-                 class="w-full max-w-xs sm:max-w-md md:max-w-2xl drop-shadow-2xl rounded-3xl">
-          </div>
-
-          <!-- Info badge-->
-          <div class="hidden md:flex absolute -bottom-5 right-1/2 translate-x-1/2 md:translate-x-0 md:right-8 bg-black/90 backdrop-blur-md border border-red-500/50 px-6 py-3 rounded-2xl text-sm items-center gap-3 shadow-2xl">
-            <i class="fa-solid fa-bolt text-yellow-400"></i>
-            <div>
-              <div class="font-semibold">2026 Premium Car Wash</div>
-              <div class="text-red-500 text-xs">Exterior • Interior • Detailing</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      </div>
-  </div>
-
-  <!-- Quick menu strip -->
-  <div class="bg-zinc-900 py-4 border-t border-b border-zinc-800">
-   <!--<div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-8 text-sm overflow-x-auto">
-      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
-        <i class="fa-solid fa-car-side"></i> SPORTS
-      </a>
-      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
-        <i class="fa-solid fa-truck-pickup"></i> SUV
-      </a>
-      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
-        <i class="fa-solid fa-bolt"></i> ELECTRIC
-      </a>
-      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
-        <i class="fa-solid fa-gem"></i> LUXURY
-      </a>
-    </div>-->
-  </div>
-
-  <div id="bookingModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center">
-    <div class="modal bg-zinc-900 rounded-3xl max-w-md w-full mx-4 border border-red-500/20 shadow-2xl overflow-hidden">
-      
-      <!-- Header -->
-      <div class="flex justify-between items-center border-b border-zinc-800 px-6 py-5">
-        <div>
-          <h2 class="text-2xl font-bold">Book Your Wash</h2>
-          <p class="text-zinc-400 text-sm">GAADIWAALA • Premium Car Care</p>
-        </div>
-        <button onclick="closeBookingModal()" class="text-3xl leading-none text-zinc-400 hover:text-white">×</button>
-      </div>
-
-      <!-- Form -->
-      <form id="bookingForm" class="p-6 space-y-5">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Full Name</label>
-            <input type="text" id="name" required 
-                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Phone Number</label>
-            <input type="tel" id="phone" required 
-                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-sm text-zinc-400 mb-1">Email Address</label>
-          <input type="email" id="email" required 
-                 class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Vehicle No.</label>
-            <input type="text" id="vehicleNo" placeholder="KL-08-AB-1234" 
-                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Vehicle Type</label>
-            <select id="vehicleType" 
-                    class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-              <option value="">Select</option>
-              <option>Hatchback</option>
-              <option>Sedan</option>
-              <option>SUV</option>
-              <option>Luxury</option>
-              <option>Electric</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-sm text-zinc-400 mb-1">Service Type</label>
-          <select id="serviceType" required 
-                  class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-            <option value="">Choose Service</option>
-            <option>Basic Exterior Wash</option>
-            <option>Premium Wash + Interior</option>
-            <option>Full Detailing</option>
-            <option>Ceramic Coating</option>
-          </select>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Date</label>
-            <input type="date" id="date" required 
-                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="block text-sm text-zinc-400 mb-1">Time</label>
-            <select id="time" required 
-                    class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
-              <option value="">Select Time</option>
-              <option>09:00 AM</option>
-              <option>10:00 AM</option>
-              <option>11:00 AM</option>
-              <option>02:00 PM</option>
-              <option>04:00 PM</option>
-              <option>06:00 PM</option>
-            </select>
-          </div>
-        </div>
-
-        <button type="submit" 
-                class="w-full bg-red-600 hover:bg-red-700 py-4 rounded-2xl font-semibold text-base transition-all mt-2">
-          CONFIRM BOOKING
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function openBookingModal() {
-      document.getElementById('bookingModal').classList.remove('hidden');
-      document.getElementById('bookingModal').classList.add('flex');
-    }
-
-    function closeBookingModal() {
-      const modal = document.getElementById('bookingModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    // Form Submit
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert("✅ Booking Received!\n\nThank you! Our team will contact you shortly.");
-      closeBookingModal();
-      this.reset();
-    });
-
-    // Close modal on outside click
-    document.getElementById('bookingModal').addEventListener('click', function(e) {
-      if (e.target === this) closeBookingModal();
-    });
-  </script>
-  <script>
-    
-    // Tailwind script already loaded via CDN
-
-    // Simple interaction - click car to toggle headlights
-    const carImage = document.getElementById('car-image');
-    let lightsOn = true;
-
-    carImage.addEventListener('click', () => {
-      lightsOn = !lightsOn;
-      
-      const headlights = document.querySelectorAll('.headlight');
-      headlights.forEach(light => {
-        if (lightsOn) {
-          light.style.opacity = '0.9';
-          light.style.filter = 'drop-shadow(0 0 40px #ffeb3b)';
-        } else {
-          light.style.opacity = '0.3';
-          light.style.filter = 'drop-shadow(0 0 10px #ffeb3b)';
-        }
-      });
-    });
-
-    // Keyboard shortcut for fun
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'r' || e.key === 'R') {
-        window.location.reload();
-      }
-    });
-
-    console.log('%cGAADIWAALA Car wash loaded. Enjoy our service!', 'color:#ff0000; font-family:monospace');
-  </script>
-
-<script>
-  function updateBusinessStatus() {
-    const now = new Date();
-    const day = now.getDay();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    
-    const currentTimeInMinutes = hours * 60 + minutes;
-    const openTime = 9 * 60 + 30;    // 9:30 AM
-    const closeTime = 19 * 60 + 30;  // 7:30 PM
-
-    const statusDot = document.getElementById('statusDot');
-    const statusText = document.getElementById('statusText');
-    const statusIndicator = document.getElementById('statusIndicator');
-
-    let isOpen = true;
-
-    if (day === 0 || currentTimeInMinutes < openTime || currentTimeInMinutes >= closeTime) {
-      isOpen = false;
-    }
-
-    if (isOpen) {
-      statusDot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
-      statusText.textContent = "NOW OPEN";
-      statusIndicator.classList.remove('bg-red-500/10');
-    } else {
-      statusDot.className = "w-3 h-3 bg-red-500 rounded-full";
-      statusText.textContent = "NOW CLOSED";
-      statusIndicator.classList.add('bg-red-500/10');
-    }
-  }
-
-  // Run immediately + every minute
-  document.addEventListener('DOMContentLoaded', () => {
-    updateBusinessStatus();
-    setInterval(updateBusinessStatus, 60000);
-  });
+  <!-- Shutter -->
+  <div class="shutter pt-20">
+    <!-- Shutter -->
+    <div class="shutter-panel">
+      <div class="flex-1 flex items-center justify-center">
+        <div class="text-center">
+          <div class="w-24 h-2 bg-zinc-400 mx-auto mb-8 rounded"></div>
+          <div class="text-4xl font-bold tracking-widest text-zinc-400">GAADIWAALA</div>
+          <div class="text-zinc-500 text-sm mt-2">PREMIUM CAR WASH</div>
+        </div>
+      </div>
+      <div class="h-12 bg-zinc-900 flex items-center justify-center gap-8 text-xs tracking-widest text-zinc-500">
+        <div>● ROLLING UP ●</div>
+        <div>● PREMIUM CAR WASH ●</div>
+        <div>● ROLLING UP ●</div>
+      </div>
+    </div>
+    <!-- inside shutter -->
+    <div class="hero flex items-center">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center relative z-10 pt-24 md:pt-0">
+        <div id="statusIndicator" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm">
+            <div id="statusDot" class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            <span id="statusText">NOW OPEN</span>
+          </div>
+         
+          <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter">
+            ELEVATE<br>YOUR DRIVE
+          </h1>
+          <p class="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-md mx-auto md:mx-0">
+            Professional car wash and detailing services for a spotless shine, every time.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <a href="status.html"><button onclick="document.getElementById('car-section').scrollIntoView({ behavior: 'smooth' })"
+                    class="bg-white text-black w-64 sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold flex items-center gap-3 hover:scale-105 transition-transform">
+              VIEW STATUS
+              <i class="fa-solid fa-arrow-right"></i>
+            </button></a>
+           
+            <button onClick="openBookingModal()"
+                    class="border border-white/50 hover:bg-white/10 w-64 sm:w-auto px-8 py-4 sm:py-5 rounded-2xl font-medium transition-colors">
+              BOOK A CAR WASH
+            </button>
+          </div>
+          <div>
+            </div>
+          <div class="flex justify-center md:justify-start gap-8 text-sm">
+            <div>
+              <div id="currentTime" class="text-red-500 text-3xl font-mono"></div>
+              <!--<div class="text-zinc-500">Time</div>-->
+            </div>
+            </div>
+        </div>
+        <div id="car-section" class="relative flex justify-center mt-10 md:mt-0">
+          <div class="relative car">
+            <img id="car-image"
+                 src="VTPzX.jpg"
+                 alt="Luxury Sports Car"
+                 class="w-full max-w-xs sm:max-w-md md:max-w-2xl drop-shadow-2xl rounded-3xl">
+          </div>
+          <!-- Info badge-->
+          <div class="hidden md:flex absolute -bottom-5 right-1/2 translate-x-1/2 md:translate-x-0 md:right-8 bg-black/90 backdrop-blur-md border border-red-500/50 px-6 py-3 rounded-2xl text-sm items-center gap-3 shadow-2xl">
+            <i class="fa-solid fa-bolt text-yellow-400"></i>
+            <div>
+              <div class="font-semibold">2026 Premium Car Wash</div>
+              <div class="text-red-500 text-xs">Exterior • Interior • Detailing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+  <!-- Quick menu strip -->
+  <div class="bg-zinc-900 py-4 border-t border-b border-zinc-800">
+   <!--<div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-8 text-sm overflow-x-auto">
+      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-car-side"></i> SPORTS
+      </a>
+      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-truck-pickup"></i> SUV
+      </a>
+      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-bolt"></i> ELECTRIC
+      </a>
+      <a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-gem"></i> LUXURY
+      </a>
+    </div>-->
+  </div>
+  <div id="bookingModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center">
+    <div class="modal bg-zinc-900 rounded-3xl max-w-md w-full mx-4 border border-red-500/20 shadow-2xl overflow-hidden">
+     
+      <!-- Header -->
+      <div class="flex justify-between items-center border-b border-zinc-800 px-6 py-5">
+        <div>
+          <h2 class="text-2xl font-bold">Book Your Wash</h2>
+          <p class="text-zinc-400 text-sm">GAADIWAALA • Premium Car Care</p>
+        </div>
+        <button onclick="closeBookingModal()" class="text-3xl leading-none text-zinc-400 hover:text-white">×</button>
+      </div>
+      <!-- Form -->
+      <form id="bookingForm" class="p-6 space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Full Name</label>
+            <input type="text" id="name" required
+                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Phone Number</label>
+            <input type="tel" id="phone" required
+                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Email Address</label>
+          <input type="email" id="email" required
+                 class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Vehicle No.</label>
+            <input type="text" id="vehicleNo" placeholder="KL-08-AB-1234"
+                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Vehicle Type</label>
+            <select id="vehicleType"
+                    class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+              <option value="">Select</option>
+              <option>Hatchback</option>
+              <option>Sedan</option>
+              <option>SUV</option>
+              <option>Luxury</option>
+              <option>Electric</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1">Service Type</label>
+          <select id="serviceType" required
+                  class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+            <option value="">Choose Service</option>
+            <option>Basic Exterior Wash</option>
+            <option>Premium Wash + Interior</option>
+            <option>Full Detailing</option>
+            <option>Ceramic Coating</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Date</label>
+            <input type="date" id="date" required
+                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm text-zinc-400 mb-1">Time</label>
+            <select id="time" required
+                    class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
+              <option value="">Select Time</option>
+              <option>09:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>02:00 PM</option>
+              <option>04:00 PM</option>
+              <option>06:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit"
+                class="w-full bg-red-600 hover:bg-red-700 py-4 rounded-2xl font-semibold text-base transition-all mt-2">
+          CONFIRM BOOKING
+        </button>
+      </form>
+    </div>
+  </div>
+  <script>
+    function openBookingModal() {
+      document.getElementById('bookingModal').classList.remove('hidden');
+      document.getElementById('bookingModal').classList.add('flex');
+    }
+    function closeBookingModal() {
+      const modal = document.getElementById('bookingModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+    // Form Submit
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("✅ Booking Received!\n\nThank you! Our team will contact you shortly.");
+      closeBookingModal();
+      this.reset();
+    });
+    // Close modal on outside click
+    document.getElementById('bookingModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBookingModal();
+    });
+  </script>
+  <script>
+   
+    // Tailwind script already loaded via CDN
+    // Simple interaction - click car to toggle headlights
+    const carImage = document.getElementById('car-image');
+    let lightsOn = true;
+    carImage.addEventListener('click', () => {
+      lightsOn = !lightsOn;
+     
+      const headlights = document.querySelectorAll('.headlight');
+      headlights.forEach(light => {
+        if (lightsOn) {
+          light.style.opacity = '0.9';
+          light.style.filter = 'drop-shadow(0 0 40px #ffeb3b)';
+        } else {
+          light.style.opacity = '0.3';
+          light.style.filter = 'drop-shadow(0 0 10px #ffeb3b)';
+        }
+      });
+    });
+    // Keyboard shortcut for fun
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'r' || e.key === 'R') {
+        window.location.reload();
+      }
+    });
+    console.log('%cGAADIWAALA Car wash loaded. Enjoy our service!', 'color:#ff0000; font-family:monospace');
+  </script>
+  <script>
+  function updateBusinessStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = Sunday
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+   
+    const currentTimeInMinutes = hours * 60 + minutes;
+    const openTime = 9 * 60 + 30; // 9:30 AM
+    const closeTime = 19 * 60 + 30; // 7:30 PM
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const statusIndicator = document.getElementById('statusIndicator');
+    let isOpen = true;
+    if (day === 0) { // Sunday = Closed
+      isOpen = false;
+    } else {
+      if (currentTimeInMinutes < openTime || currentTimeInMinutes >= closeTime) {
+        isOpen = false;
+      }
+    }
+    if (isOpen) {
+      statusDot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
+      statusText.textContent = "NOW OPEN";
+      statusIndicator.classList.remove('bg-red-500/10');
+    } else {
+      statusDot.className = "w-3 h-3 bg-red-500 rounded-full";
+      statusText.textContent = "NOW CLOSED";
+      statusIndicator.classList.add('bg-red-500/10');
+    }
+  }
+  // Run when page loads + update every minute
+  window.addEventListener('load', () => {
+    updateBusinessStatus();
+    setInterval(updateBusinessStatus, 60000); // Check every 60 seconds
+  });
 </script>
-  
 </body>
 </html>
