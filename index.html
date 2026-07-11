@@ -451,41 +451,45 @@
 
     console.log('%cGAADIWAALA Car wash loaded. Enjoy our service!', 'color:#ff0000; font-family:monospace');
   </script>
-  <script>
-function updateBusinessStatus() {
-      const now = new Date();
-      const day = now.getDay(); // 0 = Sunday
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      
-      const currentTimeInMinutes = hours * 60 + minutes;
-      const openTime = 9 * 60 + 30;   // 9:30 AM
-      const closeTime = 19 * 60 + 30; // 7:30 PM
 
-      const statusDot = document.getElementById('statusDot');
-      const statusText = document.getElementById('statusText');
-      const statusIndicator = document.getElementById('statusIndicator');
+<script>
+  function updateBusinessStatus() {
+    const now = new Date();
+    const day = now.getDay();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    
+    const currentTimeInMinutes = hours * 60 + minutes;
+    const openTime = 9 * 60 + 30;    // 9:30 AM
+    const closeTime = 19 * 60 + 30;  // 7:30 PM
 
-      let isOpen = true;
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const statusIndicator = document.getElementById('statusIndicator');
 
-      if (day === 0) { // Sunday
-        isOpen = false;
-      } else {
-        if (currentTimeInMinutes < openTime || currentTimeInMinutes >= closeTime) {
-          isOpen = false;
-        }
-      }
+    let isOpen = true;
 
-      if (isOpen) {
-        statusDot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
-        statusText.textContent = "NOW OPEN";
-        statusIndicator.classList.remove('bg-red-500/10');
-      } else {
-        statusDot.className = "w-3 h-3 bg-red-500 rounded-full";
-        statusText.textContent = "NOW CLOSED";
-        statusIndicator.classList.add('bg-red-500/10');
-      }
+    if (day === 0 || currentTimeInMinutes < openTime || currentTimeInMinutes >= closeTime) {
+      isOpen = false;
     }
-    </script>
+
+    if (isOpen) {
+      statusDot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
+      statusText.textContent = "NOW OPEN";
+      statusIndicator.classList.remove('bg-red-500/10');
+    } else {
+      statusDot.className = "w-3 h-3 bg-red-500 rounded-full";
+      statusText.textContent = "NOW CLOSED";
+      statusIndicator.classList.add('bg-red-500/10');
+    }
+  }
+
+  // Run immediately + every minute
+  document.addEventListener('DOMContentLoaded', () => {
+    updateBusinessStatus();
+    setInterval(updateBusinessStatus, 60000);
+  });
+</script>
+  
 </body>
 </html>
