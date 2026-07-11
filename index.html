@@ -225,12 +225,10 @@
       <div class="max-w-7xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center relative z-10 pt-24 md:pt-0">
         
         
-        <div class="space-y-6 text-center md:text-left">
-          <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm">
-            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            NOW OPEN
-          </div>
-
+        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm">
+    <div id="statusDot" class="w-3 h-3 rounded-full animate-pulse"></div>
+    <span id="shopStatus"></span>
+        </div>
           <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter">
             ELEVATE<br>YOUR DRIVE
           </h1>
@@ -471,6 +469,36 @@ const mobileMenu = document.getElementById("mobileMenu");
 menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
 });
+
+function updateShopStatus() {
+    const now = new Date();
+
+    const day = now.getDay(); // Sunday = 0, Monday = 1, Saturday = 6
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    const currentTime = hours * 60 + minutes;
+
+    // Opening time 9:30 AM = 570 minutes
+    // Closing time 7:30 PM = 1170 minutes
+    const openingTime = 9 * 60 + 30;
+    const closingTime = 19 * 60 + 30;
+
+    const status = document.getElementById("shopStatus");
+    const dot = document.getElementById("statusDot");
+
+    if (day >= 1 && day <= 6 && currentTime >= openingTime && currentTime <= closingTime) {
+        status.textContent = "NOW OPEN";
+        dot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
+    } 
+    else {
+        status.textContent = "NOW CLOSED";
+        dot.className = "w-3 h-3 bg-red-500 rounded-full";
+    }
+}
+
+updateShopStatus();
+setInterval(updateShopStatus, 60000);
 </script>
 </body>
 </html>
