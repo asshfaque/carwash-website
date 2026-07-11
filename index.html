@@ -452,55 +452,5 @@
 
     console.log('%cGAADIWAALA Car wash loaded. Enjoy our service!', 'color:#ff0000; font-family:monospace');
   </script>
-<script>
-function updateTime() {
-  const now = new Date();
-  const time = now.toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-  document.getElementById("currentTime").textContent = time;
-}
-
-updateTime();
-setInterval(updateTime, 1000);
-
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-
-menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-});
-
-function updateShopStatus() {
-    const now = new Date();
-
-    const day = now.getDay(); // Sunday = 0, Monday = 1, Saturday = 6
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-
-    const currentTime = hours * 60 + minutes;
-
-    // Opening time 9:30 AM = 570 minutes
-    // Closing time 7:30 PM = 1170 minutes
-    const openingTime = 9 * 60 + 30;
-    const closingTime = 19 * 60 + 30;
-
-    const status = document.getElementById("shopStatus");
-    const dot = document.getElementById("statusDot");
-
-    if (day >= 1 && day <= 6 && currentTime >= openingTime && currentTime <= closingTime) {
-        status.textContent = "NOW OPEN";
-        dot.className = "w-3 h-3 bg-green-400 rounded-full animate-pulse";
-    } 
-    else {
-        status.textContent = "NOW CLOSED";
-        dot.className = "w-3 h-3 bg-red-500 rounded-full";
-    }
-}
-
-updateShopStatus();
-setInterval(updateShopStatus, 60000);
-</script>
 </body>
 </html>
