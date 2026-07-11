@@ -145,7 +145,12 @@
         <a href="about.html" class="nav-link">ABOUT</a>
       </div>
 
-        <div class="flex items-center gap-2 sm:gap-4">
+<button id="menuBtn"
+        class="md:hidden text-2xl text-white">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+        <div class="hidden md:flex items-center gap-4">
         <button onclick="window.location.href='tel:+918606856000'"
                 class="px-3 sm:px-6 py-2 text-xs sm:text-sm" text-sm font-semibold border border-white/30 hover:border-white transition-colors rounded-full flex items-center gap-2">
           <i class="fa-solid fa-phone"></i>
@@ -159,6 +164,43 @@
       </div>
     </div>
   </nav>
+
+<div id="mobileMenu"
+     class="hidden md:hidden bg-black border-b border-zinc-800">
+
+    <a href="#" class="block px-6 py-4 border-b border-zinc-800">HOME</a>
+
+    <a href="https://www.google.com/maps/..."
+       class="block px-6 py-4 border-b border-zinc-800">
+       LOCATION
+    </a>
+
+    <a href="services.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       SERVICES
+    </a>
+
+    <a href="status.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CURRENT STATUS
+    </a>
+
+    <a href="about.html"
+       class="block px-6 py-4 border-b border-zinc-800">
+       ABOUT
+    </a>
+
+    <a href="tel:+918606856000"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CONTACT
+    </a>
+
+    <button onclick="openBookingModal()"
+            class="w-full text-left px-6 py-4 text-red-500 font-semibold">
+        BOOK
+    </button>
+
+</div>
 
   <!-- Shutter -->
   <div class="shutter pt-20">
@@ -186,7 +228,7 @@
         <div class="space-y-6 text-center md:text-left">
           <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm">
             <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            NOW OPEN
+            NOW thoran
           </div>
 
           <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter">
@@ -422,6 +464,13 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+});
 </script>
 </body>
 </html>
