@@ -24,36 +24,78 @@
 
   <!-- Navbar -->
   <nav class="bg-black/90 backdrop-blur-md fixed w-full z-50 border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <div>
-          <span class="text-2xl font-bold tracking-tighter">GAADI</span>
-          <span class="text-2xl font-light tracking-widest text-red-500">WAALA</span>
-        </div>
+  <span class="text-lg sm:text-2xl font-bold tracking-tighter">GAADI</span>
+  <span class="text-lg sm:text-2xl font-light tracking-widest text-red-500">WAALA</span>
+</div>
       </div>
 
       <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-        <a href="index.html" onclick="window.location.reload()" class="nav-link">HOME</a>
-        <a href="https://www.google.com/maps/dir//GaadiWaala+Car+Wash,+Tyre+Sales+%26+Wheel+Alignment,+C3VV%2BG3W,+Thalikulam,+Kerala+680569/@10.0298642,76.3296355,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3ba7f30042d9c2cb:0xa0ff5231a503c0c!2m2!1d76.0930544!2d10.4440319?entry=ttu&g_ep=EgoyMDI2MDcwNS4wIKXMDSoASAFQAw%3D%3D" class="nav-link">LOCATION</a>
-        <a href="#" class="nav-link text-red-500">SERVICES</a>
-        <a href="status.html" class="nav-link">CURRENT STATUS</a>
-        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="#" onclick="window.location.reload()" class="nav-link text-red-500">HOME</a>
+        <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569" class="nav-link">LOCATION</a>
+        <a href="{% url 'services' %}" class="nav-link">SERVICES</a>
+        <a href="{% url 'status' %}" class="nav-link">CURRENT STATUS</a>
+        <a href="{% url 'about' %}" class="nav-link">ABOUT</a>
       </div>
 
-      <div class="flex items-center gap-4">
+<button id="menuBtn"
+        class="md:hidden text-2xl text-white">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+        <div class="hidden md:flex items-center gap-4">
         <button onclick="window.location.href='tel:+918606856000'"
-                class="px-6 py-2.5 text-sm font-semibold border border-white/30 hover:border-white transition-colors rounded-full flex items-center gap-2">
+                class="px-3 sm:px-6 py-2 text-xs sm:text-sm" text-sm font-semibold border border-white/30 hover:border-white transition-colors rounded-full flex items-center gap-2">
           <i class="fa-solid fa-phone"></i>
           <span>CONTACT</span>
         </button>
         <button onClick="openBookingModal()" 
-                class="bg-red-600 hover:bg-red-700 transition-colors px-8 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2">
+                class="bg-red-600 hover:bg-red-700 transition-colors px-4 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2">
           <i class="fa-solid fa-car"></i>
           BOOK
         </button>
       </div>
     </div>
   </nav>
+
+<div id="mobileMenu"
+     class="hidden md:hidden bg-black border-b border-zinc-800">
+
+    <a href="#" class="block px-6 py-4 border-b border-zinc-800">HOME</a>
+
+    <a href="https://www.google.com/maps?rlz=1C1PNFE_enIN1098IN1103&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg8MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzITCAQQLhiDARjHARixAxjRAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDMwOTZqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KcvC2UIA86c7MQw8UBoj9Q8K&daddr=C3VV%2BG3W,+Thalikulam,+Kerala+680569"
+       class="block px-6 py-4 border-b border-zinc-800">
+       LOCATION
+    </a>
+
+    <a href="{% url 'services' %}"
+       class="block px-6 py-4 border-b border-zinc-800">
+       SERVICES
+    </a>
+
+    <a href="{% url 'status' %}"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CURRENT STATUS
+    </a>
+
+    <a href="{% url 'about' %}"
+       class="block px-6 py-4 border-b border-zinc-800">
+       ABOUT
+    </a>
+
+    <a href="tel:+918606856000"
+       class="block px-6 py-4 border-b border-zinc-800">
+       CONTACT
+    </a>
+
+    <button onclick="openBookingModal()"
+            class="block px-6 py-4 border-b border-zinc-800">
+        BOOK
+    </button>
+
+</div>
 
   <!-- Hero -->
   <div class="pt-24 pb-16 bg-gradient-to-b from-zinc-900 to-zinc-950">
